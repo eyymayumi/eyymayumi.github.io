@@ -1,27 +1,16 @@
-<form id="test-form">
-  
-  <div>
-    <label>Field 1</label>
-    <input type="text" name="Time" placeholder="Field 1"/>
-  </div>
-
-  <div>
-    <label>Field 2</label>
-    <input type="text" name="Item" placeholder="Field 2"/>
-  </div>
-  
-  <div>
-    <label>Field 3</label>
-    <input type="text" name="Amount" placeholder="Field 3"/>
-  </div>
-  
-  <div>
-    <label>Field 4</label>
-    <input type="text" name="Category" placeholder="Field 4"/>
-  </div>
-
-   <div>
-    <button type="submit"id="submit-form">Submit</button>
-  </div>
-
+<form name="submit-to-google-sheet">
+  <input name="item" type="text" placeholder="item" required>
+  <button type="submit">Send</button>
 </form>
+
+<script>
+  const scriptURL = 'https://script.google.com/macros/u/1/s/AKfycbzV79QH4E3F2b4NNhg1b54PKtvcW920jEGt_PYgdVHOLGfXU_E/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
