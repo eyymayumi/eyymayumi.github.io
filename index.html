@@ -1,11 +1,11 @@
-<form name="test-form">
+<form name="TestForm">
   <input name="item" type="text" placeholder="item" required>
   <button type="submit">Send</button>
 </form>
 
 <script>
   const scriptURL = 'https://script.google.com/macros/u/1/s/AKfycbzV79QH4E3F2b4NNhg1b54PKtvcW920jEGt_PYgdVHOLGfXU_E/exec'
-  const form = document.forms['submit-to-google-sheet']
+  const form = document.forms['TestForm']
 
   form.addEventListener('submit', e => {
     e.preventDefault()
